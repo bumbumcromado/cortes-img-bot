@@ -1,103 +1,11 @@
+import ITemplate from "./interfaces/ITemplate";
 import IThumbnail from "./interfaces/IThumb";
+import { thumbSimples } from "./templates/thumbSimples";
 
-export function gerarTemplate(thumb: IThumbnail){
-    return `
-    <!DOCTYPE html>
-    <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="reset.css">
-        <title>teste mobile</title>
-    </head>
-    <style>
-        html{
-            background-color: #F9F9F9;
-        }
-        .container{
-            width: 540px;
-            height: 500px;
-            margin: 0 auto;
-        }
-        .container img{
-            max-width: 540px;
-        }
-        .texto_container{
-            max-width: 450px;
-            float: right;
-        }
-        .menu {
-            width: 20px;
-            height: 20px;
-            float: right;
-            margin-top: 5px;
-        }
-        .menu img{
-            padding-right: 3px;
-            padding-top: 3px;
-            width: 17px;
-            height: 20px;
-        }
-        .texto{
-            margin-top: 7px;
-            padding-left: 7px;
-            font-family: "Roboto";
-        }
-        .texto h3{
-            color: #030303;
-            font-weight: 400;
-            font-size: 23px;
-        }
-        .texto p{
-            color: #606060;
-            padding-top: 5px;
-            font-size: 16px;
-        }
-        .icone{
-            float: left;
-            height: 50px;
-            width: 50px;
-            margin-left: 10px;
-            margin-top: 5px;
-            border-radius: 50%;
-        }.texto_thumb{
-            font-size: 32px;
-            padding-left: 300px;
-            padding-top: 60px;
-            max-width: 200px;
-            position: absolute;
-            text-shadow: 2px 2px 0px #000000, 5px 4px 0px rgba(0,0,0,0.25), 1px -1px 7px rgba(0,0,0,0.91);
-            font-style: italic;
-            font-weight: bold;
-            color: white;
-            font-family: "Open Sans";
-            text-align: center;
-        }
-    </style>
-    <body>
-        <div class="container">
-            <div class="texto_thumb">${thumb.texto}</div>
-            <img src="./imagens/thumb${thumb.imagem}.png" alt="" srcset="">
-            
-            <img class="icone" src="./imagens/icone.jpg" alt="">
-            <div class="menu"><img src="./imagens/icon_menu.png" alt=""></div>
-            <div class="texto_container">
-                <div class="texto">
-                    
-                    <h3>${thumb.titulo}</h3>
-                    
-                    <p>Cortes do Yetola [OFICIAL] · 2,8 mil visualizações · há 1 ano</p>
-                    
-                </div>
-            </div>
-    
-        </div>
-    </body>
-    </html>
-    `
+
+export function gerarTemplate(thumb: IThumbnail): ITemplate{
+    if(thumb.template == 'thumbSimples'){
+        return thumbSimples(thumb);
+    }
 }
 

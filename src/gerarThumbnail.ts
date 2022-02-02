@@ -1,10 +1,11 @@
 import { gerarPrint } from "./gerarPrint";
-import ITemplate from "./interfaces/ITemplate";
+import { gerarTemplate } from "./gerarTemplate";
+import IThumbnail from "./interfaces/IThumb";
 import { salvarHTML } from "./salvarHTML";
 
 
-export async function gerarThumbnail(port: number, template: ITemplate, nomeArquivo:string){
-    const templateGerado = template.templateString;
-    await salvarHTML(templateGerado);
-    await gerarPrint({ width: template.width, height: template.height}, `./thumbs_finais/${nomeArquivo}.png`, port);
+export async function gerarThumbnail(port: number, thumb:IThumbnail){
+    const template = gerarTemplate(thumb);
+    await salvarHTML(template.templateString);
+    await gerarPrint({ width: template.width, height: template.height}, `./thumbs_finais/${thumb.nome}.png`, port);
 }
