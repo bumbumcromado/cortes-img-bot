@@ -9,9 +9,9 @@ app.use(express.static('public'));
 
 const thumbTeste = {
     nome: 'patati_patata',
-    template:'thumbSimples',
+    template:'desktop',
     texto: '"ELES NÃO SABIAM QUE OS CARAS ERAM OS COVERS"',
-    imagem: 8,
+    imagem: 13,
     titulo: 'DEU TUDO ERRADO NO SHOW DO PATATI PATATA | Cortes do Yetz'
 };
 

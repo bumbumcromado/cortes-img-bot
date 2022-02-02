@@ -1,4 +1,12 @@
-<!DOCTYPE html>
+import ITemplate from "../interfaces/ITemplate"
+import IThumbnail from "../interfaces/IThumb"
+
+export const desktop = (thumb: IThumbnail):ITemplate => {
+    return {
+        nome: 'desktop',
+        height: 233,
+        width: 760,
+        templateString: `<!DOCTYPE html>
         <html lang="pt-br">
         <head>
             <meta charset="UTF-8">
@@ -62,11 +70,11 @@
         </style>
         <body>
             <div class="container">
-                <img class="thumb" src="./imagens/thumb13.png" alt="">
-                <div class="texto_thumb">"ELES NÃO SABIAM QUE OS CARAS ERAM OS COVERS"</div>
+                <img class="thumb" src="./imagens/thumb${thumb.imagem}.png" alt="">
+                <div class="texto_thumb">${thumb.texto}</div>
                 
                 <div class="texto">
-                    <h3>DEU TUDO ERRADO NO SHOW DO PATATI PATATA | Cortes do Yetz</h3>
+                    <h3>${thumb.titulo}</h3>
                     <img src="./imagens/views2.png" alt="">
                     <p>---------- Esse corte não é real e foi gerado apenas para fins de entretenimento!</p>
                 </div>
@@ -74,4 +82,6 @@
             </div>
         </body>
         </html>
-        
+        `
+    }
+}
