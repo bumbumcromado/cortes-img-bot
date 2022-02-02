@@ -1,6 +1,5 @@
-import { gerarPrint } from "./gerarPrint";
-import { gerarTemplate } from "./gerarTemplate";
-import { salvarHTML } from "./salvarHTML";
+import { gerarThumbnail } from "./gerarThumbnail";
+import { thumbSimples } from "./templates/thumbSimples";
 
 const express = require('express');
 const app = express();
@@ -9,10 +8,11 @@ const port = 3000;
 
 app.use(express.static('public'));
 
+const thumbTeste = {texto: '"NUNCA QUIS JOGAR DE SUPORTE NA VIDA"', imagem: 8, titulo: 'SOBRE A COMPRA DA BLIZZARD | Cortes do Yetz' };
+const template = thumbSimples(thumbTeste);
+
 app.listen(port, async () => {
     console.log(`servidor rodando na porta ${port}`);
-    const template = gerarTemplate({texto: '"NÃO DÁ PRA SABER AINDA, VAMOS ACOMPANHAR"', imagem: 7, titulo: 'SOBRE A COMPRA DA BLIZZARD | Cortes do Yetz' });
-    await salvarHTML(template);
-    await gerarPrint({ width:538, height: 397}, './thumbs_finais/teste.png', port);
+    await gerarThumbnail(port, template, 'suporte');
     process.exit(0);
-  });
+});

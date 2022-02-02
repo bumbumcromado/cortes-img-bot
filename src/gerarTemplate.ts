@@ -1,10 +1,6 @@
-interface thumb{
-    texto: string,
-    imagem: number,
-    titulo: string
-}
+import IThumbnail from "./interfaces/IThumb";
 
-export function gerarTemplate(thumb: thumb){
+export function gerarTemplate(thumb: IThumbnail){
     return `
     <!DOCTYPE html>
     <html lang="pt-br">

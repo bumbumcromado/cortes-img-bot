@@ -1,4 +1,12 @@
+import ITemplate from "../interfaces/ITemplate"
+import IThumbnail from "../interfaces/IThumb"
 
+export const thumbSimples = (thumb: IThumbnail):ITemplate => {
+    return {
+        nome: 'thumbSimples',
+        height: 397,
+        width: 538,
+        templateString: `
         <!DOCTYPE html>
         <html lang="pt-br">
         <head>
@@ -77,15 +85,15 @@
         </style>
         <body>
             <div class="container">
-                <div class="texto_thumb">"NUNCA QUIS JOGAR DE SUPORTE NA VIDA"</div>
-                <img src="./imagens/thumb8.png" alt="" srcset="">
+                <div class="texto_thumb">${thumb.texto}</div>
+                <img src="./imagens/thumb${thumb.imagem}.png" alt="" srcset="">
                 
                 <img class="icone" src="./imagens/icone.jpg" alt="">
                 <div class="menu"><img src="./imagens/icon_menu.png" alt=""></div>
                 <div class="texto_container">
                     <div class="texto">
                         
-                        <h3>SOBRE A COMPRA DA BLIZZARD | Cortes do Yetz</h3>
+                        <h3>${thumb.titulo}</h3>
                         
                         <p>Cortes do Yetola [OFICIAL] · 2,8 mil visualizações · há 1 ano</p>
                         
@@ -95,4 +103,6 @@
             </div>
         </body>
         </html>
-        
+        `
+    }
+}
