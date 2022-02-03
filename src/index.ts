@@ -31,6 +31,7 @@ const thumbTeste2 = {
 app.listen(port, async () => {
     console.log(`servidor rodando na porta ${port}`);
     await gerarThumbnail(port, thumbTeste);
+    await gerarThumbnail(port);
     await gerarThumbnail(port, thumbTeste2);
     process.exit(0);
 });
