@@ -8,15 +8,29 @@ const port = 3000;
 app.use(express.static('public'));
 
 const thumbTeste = {
-    nome: 'patati_patata',
-    template:'desktop',
-    texto: '"ELES NÃO SABIAM QUE OS CARAS ERAM OS COVERS"',
+    nome: 'lenda',
+    template:'thumbSimples',
+    texto: '"O CARA É SIMPLESMENTE UMA LENDA"',
     imagem: 13,
-    titulo: 'DEU TUDO ERRADO NO SHOW DO PATATI PATATA | Cortes do Yetz'
+    titulo: 'SOBRE O CELSO PORTIOLI | Cortes do Yetz',
+    nomeCanal: 'MultiCortes',
+    numViews: '318 mil',
+    data: '2 anos',
+    avatar: 'https://i.imgur.com/xIK8ymS.jpg'
 };
+
+const thumbTeste2 = {
+    nome: 'teste_nome2',
+    template:'thumbSimples',
+    texto: '"TESTANDO PUXAR IMAGENS DA NUVEM"',
+    imagem: 13,
+    titulo: 'PEGANDO IMAGENS DO IMGUR | Cortes do Yetz'
+};
+
 
 app.listen(port, async () => {
     console.log(`servidor rodando na porta ${port}`);
     await gerarThumbnail(port, thumbTeste);
+    await gerarThumbnail(port, thumbTeste2);
     process.exit(0);
 });

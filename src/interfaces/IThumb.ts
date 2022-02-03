@@ -3,5 +3,9 @@ export default interface IThumbnail {
     nome:string,
     texto: string,
     imagem: number,
-    titulo: string
+    titulo: string,
+    nomeCanal?: string,
+    numViews?: string,
+    data?: string,
+    avatar?: string
 }

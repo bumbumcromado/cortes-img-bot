@@ -1,6 +1,7 @@
 import ITemplate from "../interfaces/ITemplate"
 import IThumbnail from "../interfaces/IThumb"
 
+
 export const thumbSimples = (thumb: IThumbnail):ITemplate => {
     return {
         nome: 'thumbSimples',
@@ -86,16 +87,16 @@ export const thumbSimples = (thumb: IThumbnail):ITemplate => {
         <body>
             <div class="container">
                 <div class="texto_thumb">${thumb.texto}</div>
-                <img src="./imagens/thumb${thumb.imagem}.png" alt="" srcset="">
+                <img src="https://i.imgur.com/SdeeDU4.png" alt="" srcset="">
                 
-                <img class="icone" src="./imagens/icone.jpg" alt="">
+                <img class="icone" src="${thumb.avatar}" alt="">
                 <div class="menu"><img src="./imagens/icon_menu.png" alt=""></div>
                 <div class="texto_container">
                     <div class="texto">
                         
                         <h3>${thumb.titulo}</h3>
                         
-                        <p>Cortes do Yetola [OFICIAL] · 2,8 mil visualizações · há 1 ano</p>
+                        <p>${thumb.nomeCanal} · ${thumb.numViews} visualizações · há ${thumb.data}</p>
                         
                     </div>
                 </div>
