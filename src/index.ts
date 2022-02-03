@@ -20,7 +20,7 @@ const thumbTeste = {
 };
 
 const thumbTeste2 = {
-    nome: 'teste_nome2',
+    nome: 'imgur',
     template:'thumbSimples',
     texto: '"TESTANDO PUXAR IMAGENS DA NUVEM"',
     imagem: 13,
@@ -31,7 +31,7 @@ const thumbTeste2 = {
 app.listen(port, async () => {
     console.log(`servidor rodando na porta ${port}`);
     await gerarThumbnail(port, thumbTeste);
-    await gerarThumbnail(port, { nome:'testando', template: 'desktop', texto: 'ola mundo', imagem: 13, titulo: 'testando novamente'});
+    await gerarThumbnail(port, { nome:'desktop', template: 'desktop', texto: 'ola mundo', imagem: 13, titulo: 'testando novamente'});
     await gerarThumbnail(port, thumbTeste2);
     process.exit(0);
 });
