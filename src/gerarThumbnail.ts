@@ -1,21 +1,17 @@
 import { gerarPrint } from "./gerarPrint";
 import { gerarTemplate } from "./gerarTemplate";
+import { IInfosComplementares } from "./interfaces/IInfosComplementares";
 import IThumbnail from "./interfaces/IThumb";
 import { salvarHTML } from "./salvarHTML";
 
-const valoresPadrao: IThumbnail = {
-    nome: 'obj_padrao',
-    template:'thumbSimples',
-    texto: '"CITACAO PADRAO"',
-    imagem: 13,
-    titulo: 'TITULO DO VÍDEO PADRÃO | Cortes do Yetz',
+const valoresPadrao: IInfosComplementares = {
     nomeCanal: 'Cortes do Yetz [OFICIAL]',
     numViews: '2,9 mil',
     data: '1 ano',
     avatar: 'https://i.imgur.com/lrWCD3s.jpg'
 }
 
-export async function gerarThumbnail(port: number, thumb:IThumbnail = valoresPadrao){
+export async function gerarThumbnail(port: number, thumb:IThumbnail){
     const thumbFinal = {
         ...valoresPadrao,
         ...thumb
