@@ -5,13 +5,13 @@ import { salvarHTML } from "./salvarHTML";
 import { valoresPadrao } from "./templates/valoresPadrao";
 
 
-export async function gerarThumbnail(port: number, thumb:IThumbnail){
+export async function gerarThumbnail(thumb:IThumbnail){
     const thumbFinal = {
         ...valoresPadrao,
         ...thumb
     }
 
     const template = gerarTemplate(thumbFinal);
-    await salvarHTML(template.templateString);
-    await gerarPrint({ width: template.width, height: template.height}, `./thumbs_finais/${thumbFinal.nome}.png`, port);
+    //await salvarHTML(template.templateString);
+    await gerarPrint({ width: template.width, height: template.height}, `./thumbs_finais/${thumbFinal.nome}.png`, template.templateString);
 }

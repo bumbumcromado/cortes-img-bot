@@ -1,4 +1,4 @@
-import { IInfosComplementares } from "../interfaces/IInfosComplementares";
+import IInfosComplementares from "../interfaces/IInfosComplementares";
 
 export const valoresPadrao: IInfosComplementares = {
     nomeCanal: 'Cortes do Yetz [OFICIAL]',

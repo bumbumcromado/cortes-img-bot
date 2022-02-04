@@ -1,19 +1,19 @@
 import { gerarThumbnail } from "./gerarThumbnail";
 
-const express = require('express');
-const app = express();
+// const express = require('express');
+// const app = express();
 
-const port = 3000;
+// const port = 3000;
 
-app.use(express.static('public'));
+// app.use(express.static('public'));
 
 const thumbTeste = {
-    nome: 'lenda',
+    nome: 'teste1',
     template:'thumbSimples',
-    texto: '"O CARA É SIMPLESMENTE UMA LENDA"',
+    texto: '"TESTE"',
     imagem: 13,
-    titulo: 'SOBRE O CELSO PORTIOLI | Cortes do Yetz',
-    nomeCanal: 'MultiCortes',
+    titulo: 'TESTE | Cortes do Yetz',
+    nomeCanal: 'TESTE',
     numViews: '318 mil',
     data: '2 anos',
     avatar: 'https://i.imgur.com/xIK8ymS.jpg'
@@ -28,10 +28,19 @@ const thumbTeste2 = {
 };
 
 
-app.listen(port, async () => {
-    console.log(`servidor rodando na porta ${port}`);
-    await gerarThumbnail(port, thumbTeste);
-    await gerarThumbnail(port, { nome:'desktop', template: 'desktop', texto: 'ola mundo', imagem: 13, titulo: 'testando novamente'});
-    await gerarThumbnail(port, thumbTeste2);
-    process.exit(0);
-});
+// app.listen(port, async () => {
+//     console.log(`servidor rodando na porta ${port}`);
+//     await gerarThumbnail(port, thumbTeste);
+//     await gerarThumbnail(port, { nome:'desktop', template: 'desktop', texto: 'ola mundo', imagem: 13, titulo: 'testando novamente'});
+//     await gerarThumbnail(port, thumbTeste2);
+//     process.exit(0);
+// });
+
+async function start(){
+    console.log('iniciando a geração dos prints');
+    await gerarThumbnail(thumbTeste);
+    //await gerarThumbnail({ nome:'desktop', template: 'desktop', texto: 'ola mundo', imagem: 13, titulo: 'testando novamente'});
+    await gerarThumbnail(thumbTeste2);
+    console.log('fim');
+}
+start();

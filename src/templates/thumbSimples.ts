@@ -17,7 +17,7 @@ export const thumbSimples = (thumb: IThumbnail):ITemplate => {
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
             <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-            <link rel="stylesheet" href="reset.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
             <title>teste mobile</title>
         </head>
         <style>
@@ -90,7 +90,7 @@ export const thumbSimples = (thumb: IThumbnail):ITemplate => {
                 <img src="https://i.imgur.com/SdeeDU4.png" alt="" srcset="">
                 
                 <img class="icone" src="${thumb.avatar}" alt="">
-                <div class="menu"><img src="./imagens/icon_menu.png" alt=""></div>
+                <div class="menu"><img src="https://i.imgur.com/S28MI3T.png" alt=""></div>
                 <div class="texto_container">
                     <div class="texto">
                         
