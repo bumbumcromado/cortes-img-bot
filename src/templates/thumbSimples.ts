@@ -87,7 +87,7 @@ export const thumbSimples = (thumb: IThumbnail):ITemplate => {
         <body>
             <div class="container">
                 <div class="texto_thumb">${thumb.texto}</div>
-                <img src="https://i.imgur.com/SdeeDU4.png" alt="" srcset="">
+                <img src="${thumb.imagem}" alt="" srcset="">
                 
                 <img class="icone" src="${thumb.avatar}" alt="">
                 <div class="menu"><img src="https://i.imgur.com/S28MI3T.png" alt=""></div>

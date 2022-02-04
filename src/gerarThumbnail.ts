@@ -1,13 +1,12 @@
 import { gerarPrint } from "./gerarPrint";
 import { gerarTemplate } from "./gerarTemplate";
 import IThumbnail from "./interfaces/IThumb";
-import { salvarHTML } from "./salvarHTML";
 import { valoresPadrao } from "./templates/valoresPadrao";
 
 
 export async function gerarThumbnail(thumb:IThumbnail){
     const thumbFinal = {
-        ...valoresPadrao,
+        ...valoresPadrao(),
         ...thumb
     }
 
