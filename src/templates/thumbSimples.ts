@@ -82,6 +82,8 @@ export const thumbSimples = (thumb: IThumbnail):ITemplate => {
                 color: white;
                 font-family: "Open Sans";
                 text-align: center;
+            }span{
+                color: rgb(253, 238, 29);
             }
         </style>
         <body>
