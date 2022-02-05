@@ -1,3 +1,4 @@
 node_modules/
 thumbs_finais/
 dist/
+.env

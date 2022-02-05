@@ -1,8 +1,9 @@
 import express from 'express';
 import { gerarThumbnail } from './gerarThumbnail';
+require('dotenv/config');
 
 const app = express();
-const port = 3000;
+let port = process.env.PORT;
 
 app.use(express.json());
 app.use(express.static('public'));
