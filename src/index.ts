@@ -1,22 +1,30 @@
-import { gerarThumbnail } from "./gerarThumbnail";
-import fs from 'fs';
+import express from 'express';
+import { gerarThumbnail } from './gerarThumbnail';
 
-const thumbTeste = {
-    nome: 'teste_imgAleatoria',
-    template:'thumbSimples',
-    texto: '"NÃO CONCORDO NEM DISCORDO, MUITO PELO <span>CONTRÁRIO</span>"',
-    titulo: 'OPINIÃO SOBRE A DISCUSSÃO XBOX VS PLAYSTATION (YETZ)',
-    nomeCanal: 'Cortes Gamers',
-    numViews: '5,6 mil',
-    data: '2 anos',
-    imagem: 'https://i.imgur.com/EkKu2Cm.png',
-    avatar: 'https://i.imgur.com/L8jx3y5.png'
-};
+const app = express();
+const port = 3000;
 
-async function start(){
-    console.log('iniciando a geração dos prints');
-    const img = await gerarThumbnail(thumbTeste);
-    fs.writeFileSync("./thumbs_finais/teste.png", img);
-    console.log('fim');
-}
-start();
+app.use(express.json());
+app.use(express.static('public'));
+app.use(express.urlencoded({
+    extended: true
+}));
+
+app.listen(port, ()=>{
+    console.log(`servidor rodando na porta ${port}`);
+});
+
+app.post('/form', async (req, res) => {
+    const body = req.body;
+    console.log(body);
+
+    try{
+        const img = await gerarThumbnail(body);
+        res.setHeader('content-type', 'image/png');
+        res.send(img);
+    } catch (error){
+        console.log(error);
+        res.send(error);
+    }
+    
+});

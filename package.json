@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev src/server.ts",
+    "dev": "ts-node-dev src/index.ts",
+    "build": "tsc",
     "test": "jest",
-    "start": "ts-node --transpile-only src/index.ts"
+    "start": "node dist/index.js",
+    "salvar-localmente": "ts-node --transpile-only src/salvarLocalmente.ts"
   },
   "keywords": [],
   "author": "",
