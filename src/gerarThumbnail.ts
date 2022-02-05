@@ -11,6 +11,10 @@ export async function gerarThumbnail(thumb:IThumbnail){
     }
 
     const template = gerarTemplate(thumbFinal);
-    //await salvarHTML(template.templateString);
-    await gerarPrint({ width: template.width, height: template.height}, `./thumbs_finais/${thumbFinal.nome}.png`, template.templateString);
+    try {
+        await gerarPrint({ width: template.width, height: template.height}, `./thumbs_finais/${thumbFinal.nome}.png`, template.templateString);   
+    } catch (error) {
+        console.log(error);
+    }
+    
 }
