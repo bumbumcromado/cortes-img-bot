@@ -12,7 +12,8 @@ export async function gerarThumbnail(thumb:IThumbnail){
 
     const template = gerarTemplate(thumbFinal);
     try {
-        await gerarPrint({ width: template.width, height: template.height}, `./thumbs_finais/${thumbFinal.nome}.png`, template.templateString);   
+        const img = await gerarPrint({ width: template.width, height: template.height}, template.templateString);   
+        return img
     } catch (error) {
         console.log(error);
     }
