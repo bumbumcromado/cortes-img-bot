@@ -1,7 +1,7 @@
 import fs from 'fs';
 import IThumbnail from '../interfaces/IThumb';
 
-const caminhoDatabase = './src/twitter/database/thumbs-database.json'
+const caminhoDatabase = './database/thumbs-database.json'
 
 export function carregarDatabase():IThumbnail[]{
     const buffer = fs.readFileSync(caminhoDatabase, 'utf-8');
