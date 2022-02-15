@@ -1,6 +1,6 @@
 import { gerarThumbnail } from "../gerarThumbnail";
 import { carregarDatabase, atualizarDatabase } from "./arquivos";
-import twitter from "./TwitterClient";
+import twitter from "./twitterClient";
 
 let conteudo = carregarDatabase();
 let thumbIndex = 0;
