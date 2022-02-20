@@ -1,14 +1,13 @@
 import { gerarThumbnail } from "../gerarThumbnail";
-import { carregarDatabase, atualizarDatabase } from "./arquivos";
 import twitter from "./twitterClient";
+import { MongoClient } from 'mongodb';
 
-let conteudo = carregarDatabase();
-let thumbIndex = 0;
+const uri = 'mongodb+srv://paparusso33:PP8Dmqlf0Iwsr1VL@cortesdb-virginia.xpbce.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const client = new MongoClient(uri);
 
-function ehPendente(elemento, index) {
-    thumbIndex = index;
-    return elemento.status === 'pendente';
-}
+const dbName = 'cortesBot';
+
+
 async function postarThumbnail(thumb) {
     console.log('gerando thumbnail',thumb);
     const img = await gerarThumbnail(thumb);
@@ -17,19 +16,30 @@ async function postarThumbnail(thumb) {
     console.log('tweet postado, id: ', createdTweet.id);
 }
 
-async function start() {
-    try {
-        const thumb = conteudo.find(ehPendente);
-        if (!thumb) {
-            console.log('nenhuma thumb pendente');
-            return;
-        }
-        postarThumbnail(thumb);
-        conteudo[thumbIndex].status = 'ok';
-        atualizarDatabase(conteudo);
-    } catch (error) {
-        console.log(error);
-    }
+async function buscarPendente(collection){
+    const resultado = await collection.findOne({status: "pendente"});
+    return resultado;
 }
 
-start();
+async function atualizarStatus(collection, nome){
+    const resultado = await collection.updateOne({ nome: nome},{$set: {status: "ok"}});
+    return resultado;
+}
+
+async function start() {
+    await client.connect();
+    console.log('Connected successfully to server');
+    const db = client.db(dbName);
+    const collection = db.collection('thumbnails');
+    const resultadoBusca = await buscarPendente(collection);
+    postarThumbnail(resultadoBusca);
+    const atualizada = await atualizarStatus(collection, resultadoBusca.nome);
+    console.log(atualizada);
+
+    return 'finalizado';
+}
+
+start()
+    .then(console.log)
+    .catch(console.error)
+    .finally(() => client.close());
