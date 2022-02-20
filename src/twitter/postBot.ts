@@ -1,8 +1,11 @@
 import { gerarThumbnail } from "../gerarThumbnail";
 import twitter from "./twitterClient";
 import { MongoClient } from 'mongodb';
+import dotenv from 'dotenv';
 
-const uri = 'mongodb+srv://paparusso33:PP8Dmqlf0Iwsr1VL@cortesdb-virginia.xpbce.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+dotenv.config();
+
+const uri = process.env.MONGO_URI;
 const client = new MongoClient(uri);
 
 const dbName = 'cortesBot';
@@ -27,14 +30,22 @@ async function atualizarStatus(collection, nome){
 }
 
 async function start() {
-    await client.connect();
-    console.log('Connected successfully to server');
-    const db = client.db(dbName);
-    const collection = db.collection('thumbnails');
-    const resultadoBusca = await buscarPendente(collection);
-    postarThumbnail(resultadoBusca);
-    const atualizada = await atualizarStatus(collection, resultadoBusca.nome);
-    console.log(atualizada);
+    try {
+        await client.connect();
+        console.log('conectado ao banco com sucesso');
+        const db = client.db(dbName);
+        const collection = db.collection('thumbnails');
+        const resultadoBusca = await buscarPendente(collection);
+        if(!resultadoBusca){
+            return 'sem thumbs pendentes'
+        }
+
+        postarThumbnail(resultadoBusca);
+        const atualizada = await atualizarStatus(collection, resultadoBusca.nome);
+        console.log(atualizada);
+    } catch (error) {
+        return error;
+    }
 
     return 'finalizado';
 }
