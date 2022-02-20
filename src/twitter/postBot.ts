@@ -24,8 +24,8 @@ async function buscarPendente(collection){
     return resultado;
 }
 
-async function atualizarStatus(collection, nome){
-    const resultado = await collection.updateOne({ nome: nome},{$set: {status: "ok"}});
+async function atualizarStatus(collection, id){
+    const resultado = await collection.updateOne({ _id: id},{$set: {status: "ok"}});
     return resultado;
 }
 
@@ -41,7 +41,7 @@ async function start() {
         }
 
         postarThumbnail(resultadoBusca);
-        const atualizada = await atualizarStatus(collection, resultadoBusca.nome);
+        const atualizada = await atualizarStatus(collection, resultadoBusca._id);
         console.log(atualizada);
     } catch (error) {
         return error;
