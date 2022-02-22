@@ -1,5 +1,40 @@
-import { MongoClient } from "mongodb";
+import { Collection, MongoClient } from "mongodb";
+import IThumbnail from "../interfaces/IThumb";
+import dotenv from 'dotenv';
 
-class MongoDB {
+dotenv.config();
+
+
+
+class Mongo {
     private client: MongoClient;
+    private mongoURI: string = process.env.MONGO_URI;
+    private databaseName: string = 'cortesBot';
+    private collectionName:string = 'thumbnails';
+    private collection: Collection;
+
+    constructor(){
+        this.createClient();
+    }
+    private createClient(){
+        const userClient = new MongoClient(this.mongoURI);
+        this.client = userClient;
+    }
+
+    async connect():Promise<void>{
+        await this.client.connect();
+        const db = this.client.db(this.databaseName);
+        this.collection = db.collection(this.collectionName);
+    }
+    async disconnect():Promise<void>{
+        this.client.close();
+    }
+
+    //alterar para IThumbnail depois que funcionar os testes, já que na interface o retorno será esse
+    async findAPendingThumbnail(){
+        await this.connect();
+        const result = this.collection.findOne({status: "pendente"});
+        return result;
+    }
 }
+export default new Mongo();
