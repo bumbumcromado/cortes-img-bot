@@ -5,7 +5,6 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 
-
 class Mongo {
     private client: MongoClient;
     private mongoURI: string = process.env.MONGO_URI;
@@ -31,9 +30,12 @@ class Mongo {
     }
 
     //alterar para IThumbnail depois que funcionar os testes, já que na interface o retorno será esse
-    async findAPendingThumbnail(){
-        await this.connect();
+    async findAPendingThumbnail():Promise<any>{
         const result = this.collection.findOne({status: "pendente"});
+        return result;
+    }
+    async updateThumbnailStatus(dbFile, postUrl){
+        const result = this.collection.updateOne({_id: dbFile._id}, {$set: {status: "ok", postUrl: postUrl}});
         return result;
     }
 }
