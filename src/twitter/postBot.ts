@@ -1,5 +1,5 @@
 import { gerarThumbnail } from "../gerarThumbnail";
-import twitter from "./twitterClient";
+import  Twitter  from "./twitterClient";
 import { MongoClient } from 'mongodb';
 import dotenv from 'dotenv';
 
@@ -11,19 +11,11 @@ const client = new MongoClient(uri);
 const dbName = 'cortesBot';
 
 
-async function postarThumbnail(thumb) {
-    console.log('gerando thumbnail',thumb);
-    const img = await gerarThumbnail(thumb);
-    const mediaId = await twitter.v1.uploadMedia(img, { type: 'png' });
-    const { data: createdTweet } = await twitter.v2.tweet({ media: { media_ids: [mediaId] } });
-    console.log('tweet postado, id: ', createdTweet.id);
-}
-
 async function buscarPendente(collection){
     const resultado = await collection.findOne({status: "pendente"});
     return resultado;
 }
-
+//atualizar com posted-url pegando o objeto completo e extraindo o id dentro da função
 async function atualizarStatus(collection, id){
     const resultado = await collection.updateOne({ _id: id},{$set: {status: "ok"}});
     return resultado;
@@ -39,8 +31,11 @@ async function start() {
         if(!resultadoBusca){
             return 'sem thumbs pendentes'
         }
+        const img = await gerarThumbnail(resultadoBusca);
 
-        postarThumbnail(resultadoBusca);
+        const tweetInfo = await Twitter.postThumbnail(img);
+        //passar esse parametro para a atualização no banco
+        console.log('posted tweet id:',tweetInfo.id);
         const atualizada = await atualizarStatus(collection, resultadoBusca._id);
         console.log(atualizada);
     } catch (error) {
