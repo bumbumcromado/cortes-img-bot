@@ -30,7 +30,7 @@ class Mongo {
     }
 
     //alterar para IThumbnail depois que funcionar os testes, já que na interface o retorno será esse
-    async findAPendingThumbnail():Promise<any>{
+    async findAPendingThumbnail():Promise<any | null>{
         const result = this.collection.findOne({status: "pendente"});
         return result;
     }
