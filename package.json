@@ -8,9 +8,9 @@
     "build": "tsc",
     "test": "jest",
     "start": "node dist/index.js",
-    "twitter-bot": "node dist/twitter/postBot.js",
-    "twitter-bot-ts": "ts-node --transpile-only src/twitter/postbot.ts",
-    "salvar-localmente": "ts-node --transpile-only src/salvarLocalmente.ts"
+    "twitter-bot": "node dist/twitter/post-bot.js",
+    "twitter-bot-ts": "ts-node --transpile-only src/twitter/post-bot.ts",
+    "save-locally": "ts-node --transpile-only src/save-file-locally.ts"
   },
   "keywords": [],
   "author": "",

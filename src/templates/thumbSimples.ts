@@ -1,10 +1,10 @@
-import ITemplate from "../interfaces/ITemplate"
-import IThumbnail from "../interfaces/IThumb"
+import Template from "../interfaces/template"
+import Thumbnail from "../interfaces/thumbnail"
 
 
-export const thumbSimples = (thumb: IThumbnail):ITemplate => {
+export const thumbSimples = (thumb: Thumbnail):Template => {
     return {
-        nome: 'thumbSimples',
+        name: 'thumbSimples',
         height: 397,
         width: 538,
         templateString: `
@@ -88,17 +88,17 @@ export const thumbSimples = (thumb: IThumbnail):ITemplate => {
         </style>
         <body>
             <div class="container">
-                <div class="texto_thumb">"${thumb.texto}"</div>
-                <img src="${thumb.imagem}" alt="" srcset="">
+                <div class="texto_thumb">"${thumb.text}"</div>
+                <img src="${thumb.image}" alt="" srcset="">
                 
                 <img class="icone" src="${thumb.avatar}" alt="">
                 <div class="menu"><img src="https://i.imgur.com/S28MI3T.png" alt=""></div>
                 <div class="texto_container">
                     <div class="texto">
                         
-                        <h3>${thumb.titulo}</h3>
+                        <h3>${thumb.title}</h3>
                         
-                        <p>${thumb.nomeCanal} · ${thumb.numViews} visualizações · há ${thumb.data}</p>
+                        <p>${thumb.channelName} · ${thumb.numViews} visualizações · há ${thumb.date}</p>
                         
                     </div>
                 </div>

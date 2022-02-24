@@ -1,5 +1,5 @@
-import { gerarThumbnail } from "../gerarThumbnail";
-import Mongo from './mongo-client';
+import { generateThumbnail } from "../generate-thumbnail";
+import Mongo from '../repositories/mongo-client';
 import  Twitter  from "./twitter-client";
 
 const postBaseUrl = 'https://twitter.com/cortesdoyetz/status/';
@@ -16,7 +16,7 @@ async function start(){
             return 'no pending thumbnails';
         }
         
-        const img = await gerarThumbnail(searchResult);
+        const img = await generateThumbnail(searchResult);
         const tweetInfo = await Twitter.postThumbnail(img);
         const updatedThumbnail = await Mongo.updateThumbnailStatus(searchResult, `${postBaseUrl}${tweetInfo.id}`);
         

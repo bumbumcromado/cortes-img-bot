@@ -1,9 +1,9 @@
-import ITemplate from "../interfaces/ITemplate"
-import IThumbnail from "../interfaces/IThumb"
+import Template from "../interfaces/template"
+import Thumbnail from "../interfaces/thumbnail"
 
-export const desktop = (thumb: IThumbnail):ITemplate => {
+export const desktop = (thumb: Thumbnail):Template => {
     return {
-        nome: 'desktop',
+        name: 'desktop',
         height: 233,
         width: 760,
         templateString: `<!DOCTYPE html>
@@ -70,11 +70,11 @@ export const desktop = (thumb: IThumbnail):ITemplate => {
         </style>
         <body>
             <div class="container">
-                <img class="thumb" src="./imagens/thumb${thumb.imagem}.png" alt="">
-                <div class="texto_thumb">${thumb.texto}</div>
+                <img class="thumb" src="./imagens/thumb${thumb.image}.png" alt="">
+                <div class="texto_thumb">${thumb.text}</div>
                 
                 <div class="texto">
-                    <h3>${thumb.titulo}</h3>
+                    <h3>${thumb.title}</h3>
                     <img src="./imagens/views2.png" alt="">
                     <p>---------- Esse corte não é real e foi gerado apenas para fins de entretenimento!</p>
                 </div>

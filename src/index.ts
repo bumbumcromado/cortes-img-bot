@@ -1,18 +1,17 @@
 import express from 'express';
-import { gerarThumbnail } from './gerarThumbnail';
+import { generateThumbnail } from './generate-thumbnail';
 require('dotenv/config');
 
 const app = express();
 let port = process.env.PORT;
 
 app.use(express.json());
-app.use(express.static('public'));
 app.use(express.urlencoded({
     extended: true
 }));
 
 app.listen(port, ()=>{
-    console.log(`servidor rodando na porta ${port}`);
+    console.log(`server is running on port: ${port}`);
 });
 
 app.post('/form', async (req, res) => {
@@ -20,7 +19,7 @@ app.post('/form', async (req, res) => {
     console.log(body);
 
     try{
-        const img = await gerarThumbnail(body);
+        const img = await generateThumbnail(body);
         res.setHeader('content-type', 'image/png');
         res.send(img);
     } catch (error){

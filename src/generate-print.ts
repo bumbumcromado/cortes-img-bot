@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer';
-import IViewport from './interfaces/IViewport';
+import Viewport from './interfaces/viewport';
 
-export async function gerarPrint(viewport: IViewport, html:string){
+export async function generatePrint(viewport: Viewport, html:string){
     const browser = await puppeteer.launch({
         'args' : [
           '--no-sandbox',
@@ -12,7 +12,7 @@ export async function gerarPrint(viewport: IViewport, html:string){
     await page.setContent(html)
     await page.setViewport(viewport);
     const img  = await page.screenshot({ type: 'png'});
-    console.log('print gerado');
+    console.log('print ok');
 
     await browser.close();
     return img;

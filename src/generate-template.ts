@@ -1,10 +1,10 @@
-import ITemplate from "./interfaces/ITemplate";
-import IThumbnail from "./interfaces/IThumb";
+import Template from "./interfaces/template";
+import Thumbnail from "./interfaces/thumbnail";
 import { desktop } from "./templates/desktop";
 import { thumbSimples } from "./templates/thumbSimples";
 
 
-export function gerarTemplate(thumb: IThumbnail): ITemplate{
+export function generateTemplate(thumb: Thumbnail): Template{
    
 
     if(thumb.template == 'thumbSimples'){

@@ -1,4 +1,4 @@
-export default interface IViewport {
+export default interface Viewport {
     width: number,
     height: number
 }
