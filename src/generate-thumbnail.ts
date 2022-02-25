@@ -1,6 +1,6 @@
 import { generatePrint } from "./generate-print";
 import { generateTemplate } from "./generate-template";
-import Thumbnail from "./interfaces/thumbnail";
+import Thumbnail from "./entities/thumbnail";
 import { thumbnailDefaultValues } from "./templates/default-values";
 
 

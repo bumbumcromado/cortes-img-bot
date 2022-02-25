@@ -1,5 +1,5 @@
-import Template from "../interfaces/template"
-import Thumbnail from "../interfaces/thumbnail"
+import Template from "../entities/template"
+import Thumbnail from "../entities/thumbnail"
 
 
 export const thumbSimples = (thumb: Thumbnail):Template => {

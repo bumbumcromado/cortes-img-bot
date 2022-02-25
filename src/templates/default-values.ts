@@ -1,5 +1,5 @@
 import { getRandomImage } from "../img/thumbs";
-import AdditionalInfo from "../interfaces/additional-info";
+import AdditionalInfo from "../entities/additional-info";
 
 export const thumbnailDefaultValues = function():AdditionalInfo {
     return {

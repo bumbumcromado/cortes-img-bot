@@ -1,5 +1,5 @@
 import puppeteer from 'puppeteer';
-import Viewport from './interfaces/viewport';
+import Viewport from './entities/viewport';
 
 export async function generatePrint(viewport: Viewport, html:string){
     const browser = await puppeteer.launch({

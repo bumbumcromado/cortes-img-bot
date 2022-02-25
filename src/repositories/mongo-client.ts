@@ -1,5 +1,5 @@
 import { Collection, MongoClient } from "mongodb";
-import Thumbnail from "../interfaces/thumbnail";
+import Thumbnail from "../entities/thumbnail";
 import dotenv from 'dotenv';
 
 dotenv.config();
