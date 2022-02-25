@@ -1,3 +1,5 @@
+import { ObjectId } from "mongodb"
+
 export default interface Thumbnail {
     template:string,
     name:string,
@@ -8,5 +10,6 @@ export default interface Thumbnail {
     numViews?: string,
     date?: string,
     avatar?: string,
-    status?: string
+    status?: string,
+    id?: ObjectId
 }

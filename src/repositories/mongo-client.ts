@@ -10,7 +10,7 @@ class Mongo {
     private mongoURI: string = process.env.MONGO_URI;
     private databaseName: string = 'cortesBot';
     private collectionName:string = 'thumbnails';
-    private collection: Collection;
+    private collection: Collection<Thumbnail>;
 
     constructor(){
         this.createClient();
@@ -30,7 +30,7 @@ class Mongo {
     }
 
     //alterar para IThumbnail depois que funcionar os testes, já que na interface o retorno será esse
-    async findAPendingThumbnail():Promise<any | null>{
+    async findAPendingThumbnail():Promise<Thumbnail | null>{
         const result = this.collection.findOne({status: "pendente"});
         return result;
     }
