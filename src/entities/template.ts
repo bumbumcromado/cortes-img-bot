@@ -1,6 +1,12 @@
-export default interface Template {
-    name:string,
+import Thumbnail from "./thumbnail";
+
+export type TemplateType = "simpleThumbnail" | "desktop";
+
+export interface Template {
+    name: TemplateType,
     height: number,
     width: number,
-    templateString: string
+    htmlTextContent: string,
+    // templateString(thumb: Thumbnail): string,
+    // generate(thumb: Thumbnail):Template;
 }

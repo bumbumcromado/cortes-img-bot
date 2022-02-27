@@ -4,9 +4,9 @@ import { thumbnailDefaultValues } from "../templates/default-values";
 export default class Thumbnail {
 
     //use an enum to check if template option is available
-    readonly template: string;
     readonly text: string;
     readonly title: string;
+    readonly template?: string;
     readonly image?: string;
     readonly channelName?: string;
     readonly numViews?: string;

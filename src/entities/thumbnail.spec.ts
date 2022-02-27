@@ -2,7 +2,6 @@ import { thumbnailDefaultValues } from "../templates/default-values";
 import Thumbnail from "./thumbnail";
 
 const testThumbnailProps = {
-    template: 'simpleThumbnail',
     text: 'fake simple text for test',
     title: 'fake simple title for test'
 }
@@ -35,6 +34,7 @@ describe('thumbnail domain entity', ()=> {
         const thumb = Thumbnail.create(testThumbnailProps);
         const additionalParams = thumbnailDefaultValues();
 
+        expect(thumb.template).toBe(additionalParams.template);
         expect(thumb.image).toBeTruthy();
         expect(thumb.channelName).toBe(additionalParams.channelName);
         expect(thumb.numViews).toBe(additionalParams.numViews);

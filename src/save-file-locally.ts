@@ -3,9 +3,9 @@ import fs from 'fs';
 
 const thumbTest = {
     name: 'teste_imgAleatoria',
-    template:'thumbSimples',
-    text: 'NÃO CONCORDO NEM DISCORDO, MUITO PELO <span>CONTRÁRIO</span>',
-    title: 'OPINIÃO SOBRE A DISCUSSÃO XBOX VS PLAYSTATION (YETZ)',
+    template:'simpleThumbnail',
+    text: 'fake text for test',
+    title: 'fake title for test',
     channelName: 'Cortes Gamers',
     numViews: '5,6 mil',
     date: '2 anos',
@@ -18,9 +18,13 @@ function saveFile(img:string | Buffer, fileName:string){
 }
 
 async function start(){
-    console.log('starting print generation');
-    const img = await generateThumbnail(thumbTest);
-    saveFile(img, 'test');
-    console.log('end');
+    try {
+        console.log('starting print generation');
+        const img = await generateThumbnail(thumbTest);
+        saveFile(img, 'test');
+        console.log('end');
+    } catch (error) {
+        console.log(error.message);
+    }
 }
 start();
