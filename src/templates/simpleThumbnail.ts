@@ -1,21 +1,19 @@
 import {Template, TemplateType} from "../entities/template"
 import Thumbnail from "../entities/thumbnail"
 
-export class simpleThumbnail implements Template {
-    readonly name: TemplateType = 'simpleThumbnail';
+export class simpleThumbnail extends Template<TemplateType.SIMPLETHUMBNAIL>{
     readonly height: number = 397;
     readonly width: number = 538;
-    htmlTextContent: string;
     
-    private constructor(){}
-
-    static generate(thumb: Thumbnail): Template {
-        const template = new simpleThumbnail();
-        template.htmlTextContent = this.templateString(thumb);
-        return template;
+    private constructor(thumb: Thumbnail){
+        super(TemplateType.SIMPLETHUMBNAIL, thumb);
     }
 
-    private static templateString(thumb: Thumbnail): string {
+    static generate(thumb: Thumbnail){
+        return new simpleThumbnail(thumb);
+    }
+
+    protected templateString(thumb: Thumbnail): string {
         return `
                 <!DOCTYPE html>
                 <html lang="pt-br">

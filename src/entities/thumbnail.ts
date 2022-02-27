@@ -1,5 +1,6 @@
 import { ObjectId } from "mongodb"
 import { thumbnailDefaultValues } from "../templates/default-values";
+import { TemplateType } from "./template";
 
 export default class Thumbnail {
 
@@ -35,7 +36,7 @@ export default class Thumbnail {
         if (!this.validateInputText(props.title)) {
             throw new Error('invalid title');
         }
-        const finalThumb = {
+        const finalThumb:Thumbnail = {
             ...thumbnailDefaultValues(),
             ...props
         }

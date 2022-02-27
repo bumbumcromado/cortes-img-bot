@@ -1,12 +1,22 @@
 import Thumbnail from "./thumbnail";
 
-export type TemplateType = "simpleThumbnail" | "desktop";
+export enum TemplateType {
+    SIMPLETHUMBNAIL = 'simpleThumbnail',
+    DESKTOP = 'desktop'
+}
 
-export interface Template {
-    name: TemplateType,
-    height: number,
-    width: number,
-    htmlTextContent: string,
-    // templateString(thumb: Thumbnail): string,
-    // generate(thumb: Thumbnail):Template;
+export abstract class Template<TemplateType>{
+
+    height: number = 0;
+    width: number = 0;
+    htmlTextContent: string = '';
+    
+    protected constructor(
+        readonly type: TemplateType,
+        props: Thumbnail | Thumbnail[]
+    ){
+        this.htmlTextContent = this.templateString(props);
+    }
+
+    protected abstract templateString(props: Thumbnail | Thumbnail[]):string;
 }
