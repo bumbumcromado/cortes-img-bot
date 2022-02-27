@@ -2,7 +2,8 @@ import Thumbnail from "./thumbnail";
 
 export enum TemplateType {
     SIMPLETHUMBNAIL = 'simpleThumbnail',
-    DESKTOP = 'desktop'
+    DESKTOP = 'desktop',
+    MULTIPLE = 'multiple'
 }
 
 export abstract class Template<TemplateType>{

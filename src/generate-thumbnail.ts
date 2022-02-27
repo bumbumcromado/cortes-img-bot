@@ -7,7 +7,7 @@ export async function generateThumbnail(thumbData:Thumbnail){
     const thumb = Thumbnail.create(thumbData);
     const template = generateTemplate(thumb);
     try {
-        const img = await generatePrint({ width: template.width, height: template.height}, template.htmlTextContent);   
+        const img = await generatePrint(template);   
         return img
     } catch (error) {
         console.log(error);
