@@ -9,7 +9,7 @@ export function generateTemplate(thumb: Thumbnail):Template<TemplateType>{
     if(thumb.template == TemplateType.SIMPLETHUMBNAIL){
         return simpleThumbnail.generate(thumb);
     }
-    if(thumb.template == 'desktop'){
+    if(thumb.template == TemplateType.DESKTOP){
         return desktop.generate(thumb);
     }
 
