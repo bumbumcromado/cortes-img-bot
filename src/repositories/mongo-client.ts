@@ -31,7 +31,7 @@ class Mongo {
 
     //alterar para IThumbnail depois que funcionar os testes, já que na interface o retorno será esse
     async findAPendingThumbnail():Promise<Thumbnail | null>{
-        const result = this.collection.findOne({status: "pendente"});
+        const result = this.collection.findOne({status: "pending"});
         return result;
     }
     async updateThumbnailStatus(dbFile, postUrl){
